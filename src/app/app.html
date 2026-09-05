@@ -5,3 +5,27 @@
   [rowData]="rowData"
   [columnDefs]="columnDefs">
 </ag-grid-angular>
+
+<div class="pagination">
+
+  <button
+    (click)="goToPage(currentPage - 1)"
+    [disabled]="currentPage === 0">
+    Previous
+  </button>
+
+  @for (page of [].constructor(totalPages); track $index) {
+    <button
+      (click)="goToPage($index)"
+      [class.active]="$index === currentPage">
+      {{ $index + 1 }}
+    </button>
+  }
+
+  <button
+    (click)="goToPage(currentPage + 1)"
+    [disabled]="currentPage === totalPages - 1">
+    Next
+  </button>
+
+</div>
